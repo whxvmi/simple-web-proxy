@@ -53,7 +53,7 @@ function rewriteLocationHeader(data) {
       headers['Location'] = proxyPrefix + abs;
     }
   } catch (e) {
-    console.error('[rewriteLocationHeader] Hata:', e.message);
+    console.error('[rewriteLocationHeader] err:', e.message);
     return;
   }
 
@@ -89,7 +89,7 @@ function rewriteM3U8(data) {
           const abs = new URL(line, baseUrl).href;
           return proxyPrefix + abs;
       } catch (e) {
-          console.error('[rewriteM3U8] URL oluşturma hatası:', e.message);
+          console.error('[rewriteM3U8] Err', e.message);
           return line;
       }
     }
@@ -137,7 +137,7 @@ const unblocker = new Unblocker({
           console.log(`[proxy] → ${url.href}`);
         }
       } catch (err) {
-        console.error('[requestMiddleware] URL parse hatası:', err.message);
+        console.error('[requestMiddleware] URL parse err', err.message);
       }
     }
   ],
@@ -154,7 +154,7 @@ const unblocker = new Unblocker({
         delete data.headers['strict-transport-security'];
         delete data.headers['public-key-pins'];
       } catch (err) {
-        console.error('[responseMiddleware] hata:', err.message);
+        console.error('[responseMiddleware] err:', err.message);
       }
     }
   ]
