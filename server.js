@@ -42,7 +42,7 @@ function rewriteLocationHeader(data) {
   if (!loc) return;
 
   const proxyPrefix = '/proxy/';
-  if (loc.includes(proxyPrefix)) return; // zaten proxy'lenmiş
+  if (loc.includes(proxyPrefix)) return; // already proxied
 
   try {
     if (/^https?:\/\//i.test(loc)) {
